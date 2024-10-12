@@ -1,24 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Navbar, Nav, Button } from "react-bootstrap";
 import { FaShoppingCart } from "react-icons/fa";
+import { useLocation, Link } from "react-router-dom";
 
 const Header = () => {
-    // State to track the active nav link
-    const [activeLink, setActiveLink] = useState("Home");
-
-    // Function to handle active link change
-    const handleActiveLink = (linkName) => {
-        setActiveLink(linkName);
-    };
+    // Get the current location (pathname)
+    const location = useLocation();
 
     return (
         <Navbar bg="dark" expand="lg" className="border-bottom py-2">
             <div className="container-fluid">
                 {/* Left section: Logo */}
                 <Navbar.Brand href="#" className="d-flex flex-column text-light">
-                    <span className="h2 mb-0">Tote</span>
-                    <span className="small">Funky Printed Bags</span>
+                <img src={require('../Assets/Images/logo.PNG')} alt="LOG0"
+                className="img-fluid rounded-2" 
+                style={{width:'60px' , height:'60px'}}/>
                 </Navbar.Brand>
 
                 {/* Toggler for mobile view */}
@@ -28,44 +25,44 @@ const Header = () => {
                 <Navbar.Collapse id="navbar-nav" className="justify-content-center">
                     <Nav className="d-flex align-items-center">
                         <Nav.Link
-                            href="/homepage"
-                            className={`mx-2 ${activeLink === "Home" ? "fw-bold text-light" : "text-white"}`}
-                            onClick={() => handleActiveLink("Home")}
+                            as={Link}
+                            to="/homepage"
+                            className={`mx-2 ${location.pathname === "/homepage" ? "fw-bold text-light active" : "text-white"}`}
                         >
                             HOME
                         </Nav.Link>
                         <Nav.Link
-                            href="/productPage"
-                            className={`mx-2 ${activeLink === "Product" ? "fw-bold text-light" : "text-white"}`}
-                            onClick={() => handleActiveLink("Product")}
+                            as={Link}
+                            to="/productPage"
+                            className={`mx-2 ${location.pathname === "/productPage" ? "fw-bold text-light active" : "text-white"}`}
                         >
                             PRODUCT
                         </Nav.Link>
                         <Nav.Link
-                            href="/cartPage"
-                            className={`mx-2 ${activeLink === "Cart" ? "fw-bold text-light" : "text-white"}`}
-                            onClick={() => handleActiveLink("Cart")}
+                            as={Link}
+                            to="/cartPage"
+                            className={`mx-2 ${location.pathname === "/cartPage" ? "fw-bold text-light active" : "text-white"}`}
                         >
                             CART
                         </Nav.Link>
                         <Nav.Link
-                            href="/orderPage"
-                            className={`mx-2 ${activeLink === "Order" ? "fw-bold text-light" : "text-white"}`}
-                            onClick={() => handleActiveLink("Order")}
+                            as={Link}
+                            to="/orderPage"
+                            className={`mx-2 ${location.pathname === "/orderPage" ? "fw-bold text-light active" : "text-white"}`}
                         >
                             ORDER
                         </Nav.Link>
                         <Nav.Link
-                            href="/orderCompletePage"
-                            className={`mx-2 ${activeLink === "OrderCompleted" ? "fw-bold text-light" : "text-white"}`}
-                            onClick={() => handleActiveLink("OrderCompleted")}
+                            as={Link}
+                            to="/orderCompletePage"
+                            className={`mx-2 ${location.pathname === "/orderCompletePage" ? "fw-bold text-light active" : "text-white"}`}
                         >
                             ORDER-COMPLETED
                         </Nav.Link>
                         <Nav.Link
-                            href="/profilePage"
-                            className={`mx-2 ${activeLink === "Profile" ? "fw-bold text-light" : "text-white"}`}
-                            onClick={() => handleActiveLink("Profile")}
+                            as={Link}
+                            to="/profilePage"
+                            className={`mx-2 ${location.pathname === "/profilePage" ? "fw-bold text-light active" : "text-white"}`}
                         >
                             PROFILE
                         </Nav.Link>

@@ -1,20 +1,15 @@
-import React from 'react'
-import Header from './Header'
-import Button from './Button'
+import React from 'react';
+import Header from './Header';
 
 function HOC(Component) {
-    function Newcomponent() {
+    return function NewComponent(props) {
         return (
             <>
                 <Header />
-                <Component />
-
+                <Component {...props} />
             </>
-        )
-    }
-    return (
-        Newcomponent
-    )
+        );
+    };
 }
 
-export default HOC
+export default HOC;

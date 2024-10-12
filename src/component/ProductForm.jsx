@@ -38,10 +38,10 @@ const ProductForm = () => {
             }}
 
         >
-            <form onSubmit={handleSubmit} className="bg-light  bg-opacity-75 p-5 rounded">
-                <h2 className="text-center mb-4">Product Form</h2>
+            <form onSubmit={handleSubmit} className="bg-light  bg-opacity-75 p-3 rounded">
+                <h2 className="text-center mb-2">Product Form</h2>
 
-                <div className="row mb-3">
+                <div className="row mb-1">
                     <div className="col-md-6">
                         <label className="form-label">Product Name</label>
                         <input
@@ -66,7 +66,7 @@ const ProductForm = () => {
                     </div>
                 </div>
 
-                <div className="row mb-3">
+                <div className="row mb-1">
                     <div className="col-md-6">
                         <label className="form-label">Category</label>
                         <input
@@ -91,7 +91,7 @@ const ProductForm = () => {
                     </div>
                 </div>
 
-                <div className="row mb-3">
+                <div className="row mb-1">
                     <div className="col-md-6">
                         <label className="form-label">Mobile</label>
                         <input
@@ -115,7 +115,7 @@ const ProductForm = () => {
                     </div>
                 </div>
 
-                <div className="mb-3">
+                <div className="mb-1">
                     <label className="form-label">Description</label>
                     <textarea
                         name="description"
@@ -127,7 +127,7 @@ const ProductForm = () => {
                     ></textarea>
                 </div>
 
-                <div className="mb-3">
+                <div className="mb-1">
                     <label className="form-label">Colors</label>
                     <input
                         type="text"
@@ -140,7 +140,7 @@ const ProductForm = () => {
 
                 </div>
 
-                <div className="mb-3">
+                <div className="mb-1">
                     <label className="form-label">Product Image</label>
                     <input
                         type="file"
@@ -151,7 +151,7 @@ const ProductForm = () => {
                     />
                 </div>
 
-                <button type="submit" className="btn btn-primary w-100">
+                <button type="submit" className="btn btn-primary mt-3 w-100">
                     Submit
                 </button>
             </form>
@@ -160,3 +160,4 @@ const ProductForm = () => {
 };
 
 export default ProductForm;
+
