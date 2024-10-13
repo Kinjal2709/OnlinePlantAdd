@@ -1,33 +1,48 @@
-import React from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Navbar, Nav, Button } from "react-bootstrap";
 import { FaShoppingCart } from "react-icons/fa";
-import { useLocation, Link } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../redux/action/actions';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 
-const Header = () => {
-    // Get the current location (pathname)
+const Header = React.memo(() => {
     const location = useLocation();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const [userData, setUserData] = useState({});
+    const cartCount = useSelector(state => state.cart.cartCount);
+
+    useEffect(() => {
+        setUserData(JSON.parse(localStorage.getItem("userData")));
+    }, []);
+
+    const handleLogout = useCallback(() => {
+        localStorage.removeItem('token');
+        dispatch(logout());
+        navigate('/');
+    }, [dispatch, navigate]);
 
     return (
         <Navbar bg="dark" expand="lg" className="border-bottom py-2">
             <div className="container-fluid">
                 {/* Left section: Logo */}
                 <Navbar.Brand href="#" className="d-flex flex-column text-light">
-                <img src={require('../Assets/Images/logo.PNG')} alt="LOG0"
-                className="img-fluid rounded-2" 
-                style={{width:'60px' , height:'60px'}}/>
+                    <img src={require('../Assets/Images/logo.PNG')} alt="LOGO"
+                        className="img-fluid rounded-2"
+                        style={{ width: '60px', height: '60px' }} />
                 </Navbar.Brand>
 
                 {/* Toggler for mobile view */}
-                <Navbar.Toggle aria-controls="navbar-nav" />
+                <Navbar.Toggle aria-controls="navbar-nav" style={{backgroundColor:'white'}} />
 
                 {/* Center section: Navigation links */}
                 <Navbar.Collapse id="navbar-nav" className="justify-content-center">
                     <Nav className="d-flex align-items-center">
                         <Nav.Link
                             as={Link}
-                            to="/homepage"
-                            className={`mx-2 ${location.pathname === "/homepage" ? "fw-bold text-light active" : "text-white"}`}
+                            to="/"
+                            className={`mx-2 ${location.pathname === "/" ? "fw-bold text-light active" : "text-white"}`}
                         >
                             HOME
                         </Nav.Link>
@@ -74,27 +89,28 @@ const Header = () => {
                     {/* Profile Image */}
                     <Nav.Link href="#" className="d-flex align-items-center me-3">
                         <img
-                            src="https://via.placeholder.com/40"
+                            src={userData?.userImage}
                             alt="Profile"
-                            className="rounded-circle"
+                            className="rounded-circle img-fluid"
                             style={{ width: "40px", height: "40px" }}
                         />
-                        <span className="ms-2 text-light">Name</span>
+                        <span className="ms-2 text-light">{userData?.userName}</span>
                     </Nav.Link>
 
                     {/* Shopping Cart Icon */}
-                    <Nav.Link href="#" className="d-flex align-items-center me-3 text-light">
+                    <Nav.Link as={Link} to="/cartPage" className="d-flex align-items-center me-3 text-light position-relative">
                         <FaShoppingCart className="fs-3" />
+                        <sup className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{cartCount}</sup>
                     </Nav.Link>
 
                     {/* Logout Button */}
-                    <Button variant="outline-light" className="ms-3">
+                    <Button onClick={handleLogout} variant="outline-light" className="ms-3">
                         Logout
                     </Button>
                 </div>
             </div>
         </Navbar>
     );
-};
+});
 
 export default Header;

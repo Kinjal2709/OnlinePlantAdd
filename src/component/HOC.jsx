@@ -5,7 +5,7 @@ function HOC(Component) {
     return function NewComponent(props) {
         return (
             <>
-                <Header />
+                <Header {...props} />
                 <Component {...props} />
             </>
         );

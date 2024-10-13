@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { MainURL } from '../App';
 
 const FormSignUp = () => {
     const [formData, setFormData] = useState({
@@ -78,14 +79,14 @@ const FormSignUp = () => {
             formdataApi.append("password", formData.password)
             formdataApi.append("confirmPassword", formData.confirmPassword)
             formdataApi.append("userImage", formData.userImage)
-            axios.post('http://localhost:7000/api/user/register', formdataApi)
+            axios.post(`${MainURL}/user/register`, formdataApi)
                 .then(function (response) {
                     console.log(response);
                     navigate('/')
-
                 })
                 .catch(function (error) {
-                    console.log(error);
+                    console.log(error.message);
+                    alert(error.message);
                 });
         }
     };

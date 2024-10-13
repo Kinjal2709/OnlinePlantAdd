@@ -1,12 +1,15 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { login } from '../redux/action/actions';
+import { MainURL } from '../App';
 
 const FormLogin = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState({ email: '', password: '' });
-    
+    const dispatch = useDispatch();
     const navigate = useNavigate()
 
     const validateForm = () => {
@@ -39,24 +42,37 @@ const FormLogin = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (validateForm()) {
-            axios.post('http://localhost:7000/api/user/login', {
+            axios.post(`${MainURL}/user/login`, {
                 email: email,
                 password: password
             })
                 .then(function (response) {
                     console.log(response);
                     localStorage.setItem("token" , response.data.token)
-                    navigate('/homePage')
+                    // dispatch(login(response.data.token));
+                    // navigate('/homePage')
+
+                    axios.get(`${MainURL}/user/getUser`,{
+                        headers: {
+                            'Authorization': `Bearer ${response.data.token}`,
+                            'Accept': 'application/json',
+                        }
+                    })
+                        .then(function (response1) {
+                            console.log(response1.data.data);
+                            localStorage.setItem("userData" , JSON.stringify(response1.data.data))
+                            dispatch(login(response.data.token));
+                        })
+                        .catch(function (error) {
+                            console.log(error.message);
+                            alert(error.message);
+                        });
+
                 })
                 .catch(function (error) {
                     console.log(error.message);
                     alert(error.message);
                 });
-            console.log('Email:', email);
-            console.log('Password:', password);
-            // Optionally clear the fields
-            setEmail('');
-            setPassword('');
         }
     };
 

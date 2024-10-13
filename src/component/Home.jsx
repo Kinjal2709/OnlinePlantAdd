@@ -1,7 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import HOC from './HOC';
+import { useDispatch } from 'react-redux';
+import axios from 'axios';
+import { MainURL } from '../App';
+import { setInitialCartCount } from '../redux/action/actions';
 
 const Home = () => {
+    const dispatch = useDispatch();
+    const auth = {
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+        }
+    }
+
+    useEffect(() => {
+        getCartList();
+    }, []);
+
+
+    const getCartList = () => {
+        axios.get(`${MainURL}/addtocart/get`, auth).then((res) => {
+            dispatch(setInitialCartCount(res?.data?.data.length ? res.data.data.length : 0));
+        }).catch(function (error) {
+            console.log(error.message); 
+            alert(error.message);
+        });
+    }
     return (
         <div
             className=''
@@ -26,7 +50,7 @@ const Home = () => {
                     }}
                 >
                     Make Your Home Good Nutrition
-                    
+
                 </h1>
             </div>
 

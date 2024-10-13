@@ -1,0 +1,183 @@
+.card {
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.02);
+}
+
+.order-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between orders */
+}
+
+.order-item {
+    display: flex;
+    background-color: #f8f9fa; /* Light background */
+    border: 1px solid #ced4da; /* Border color */
+    border-radius: 5px; /* Rounded corners */
+    padding: 15px; /* Inner padding */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow effect */
+}
+
+.order-image {
+    max-height: 150px; /* Image height */
+    width: auto; /* Maintain aspect ratio */
+    margin-right: 15px; /* Space between image and details */
+    border-radius: 5px; /* Rounded image corners */
+}
+
+.order-details {
+    flex: 1; /* Take remaining space */
+}
+
+.order-title {
+    font-size: 1.25rem; /* Title size */
+    margin: 0; /* Remove default margin */
+    font-weight: bold; /* Bold text */
+}
+
+.order-summary {
+    display: flex;
+    justify-content: space-between; /* Space out summary items */
+    margin-top: 10px; /* Space above summary */
+    font-weight: bold; /* Bold text */
+}
+
+.order-actions {
+    display: flex;
+    justify-content: space-between; /* Space between buttons */
+    margin-top: 15px; /* Space above actions */
+}
+
+.btn {
+    flex: 1; /* Buttons take equal space */
+    margin-right: 10px; /* Space between buttons */
+}
+
+.btn:last-child {
+    margin-right: 0; /* Remove margin from the last button */
+}
+
+.order-complete-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between order items */
+}
+
+.order-complete-item {
+    display: flex;
+    background-color: #f8f9fa; /* Light background */
+    border: 1px solid #ced4da; /* Border color */
+    border-radius: 5px; /* Rounded corners */
+    padding: 15px; /* Inner padding */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow effect */
+}
+
+.order-complete-image {
+    max-height: 150px; /* Image height */
+    width: auto; /* Maintain aspect ratio */
+    margin-right: 15px; /* Space between image and details */
+    border-radius: 5px; /* Rounded image corners */
+}
+
+.order-complete-details {
+    flex: 1; /* Take remaining space */
+}
+
+.order-complete-title {
+    font-size: 1.25rem; /* Title size */
+    margin: 0; /* Remove default margin */
+    font-weight: bold; /* Bold text */
+}
+
+.order-complete-summary {
+    display: flex;
+    justify-content: space-between; /* Space out summary items */
+    margin-top: 10px; /* Space above summary */
+    font-weight: bold; /* Bold text */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .order-complete-item {
+        flex-direction: column; /* Stack elements on smaller screens */
+        align-items: center; /* Center align for better appearance */
+    }
+
+    .order-complete-image {
+        margin-bottom: 10px; /* Space below image */
+    }
+}
+
+/* Profile Container */
+.profile-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    color: #333;
+}
+
+/* Profile Title */
+.profile-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: #d9534f; /* Bootstrap danger color */
+    border-bottom: 3px solid #d9534f;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+/* Profile Image */
+.profile-image-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid #d9534f;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.profile-image:hover {
+    transform: scale(1.1);
+}
+
+/* Profile Information */
+.profile-info {
+    display: flex;
+    justify-content: space-around;
+    text-align: left;
+    margin-top: 20px;
+}
+
+.info-column {
+    flex: 1;
+    margin: 0 10px;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.info-column p {
+    background: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Strong Text */
+p strong {
+    color: #d9534f; /* Consistent accent color */
+}
