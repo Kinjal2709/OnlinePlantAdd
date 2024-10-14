@@ -28,7 +28,7 @@ const Home = () => {
     }
     return (
         <div
-            className=''
+            className='container-fluid'
             style={{
                 backgroundImage: `url(${require('../Assets/Images/home.webp')})`,
                 backgroundSize: 'cover',

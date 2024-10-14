@@ -77,7 +77,7 @@ const FormLogin = () => {
     };
 
     return (
-        <div
+        <div 
             style={{
                 backgroundImage: `url(${require('../Assets/Images/signIn_page.jpg')})`,
                 backgroundSize: 'cover',
