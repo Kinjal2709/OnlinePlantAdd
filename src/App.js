@@ -12,7 +12,6 @@ import Product from './component/Product';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from './redux/action/actions';
-import ProductDetails from './component/ProductDetails';
 import { useNavigate } from 'react-router-dom';
 
 export const MainURL = "http://localhost:7000/api";
@@ -50,7 +49,6 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/productPage" element={<Product />} />
             <Route path="/productformPage" element={<ProductForm setProductData={setProductData} />} />
-            <Route path="/product-details" element={<ProductDetails productData={productData} />} />
             <Route path="/cartPage" element={<Cart />} />
             <Route path="/orderPage" element={<Order />} />
             <Route path="/orderCompletePage" element={<OrderComplete />} />

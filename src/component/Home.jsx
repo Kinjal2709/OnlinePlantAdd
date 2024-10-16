@@ -20,7 +20,9 @@ const Home = () => {
 
     const getCartList = () => {
         axios.get(`${MainURL}/addtocart/get`, auth).then((res) => {
-            dispatch(setInitialCartCount(res?.data?.data.length ? res.data.data.length : 0));
+            dispatch(setInitialCartCount(res?.data?.data?.length ? res.data.data?.length : 0));
+            // console.log(res?.data?.data?.length);
+            
         }).catch(function (error) {
             console.log(error.message); 
             alert(error.message);

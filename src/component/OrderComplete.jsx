@@ -9,7 +9,7 @@ function OrderComplete() {
     const navigate = useNavigate();
     const [data, setData] = useState([]);
 
-    const auth = {
+    const auth = {  
         headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`
         }
