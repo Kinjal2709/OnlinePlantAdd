@@ -31,7 +31,8 @@ function App() {
   }, [dispatch]);
 
   useEffect(() => {
-    if (!token && location.pathname !== '/SignUp') {
+    console.log("CHANGE DESTINATION")
+    if (!token && location.pathname !== '/SignUp' &&                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                location.pathname !== '/') {
       navigate('/');
     }
   }, [token, navigate, location]);
